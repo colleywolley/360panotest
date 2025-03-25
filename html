@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Scene with 360° Skybox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0; /* Light grey background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      model-viewer {
+        width: 100%;  /* Make model-viewer fill its parent */
+        height: 100%;
+        max-width: 800px; /* Limit the maximum size */
+        max-height: 600px;
+        border-radius: 10px; /* Optional: Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow for depth */
+        background-color: #fff;
+      }
+    </style>
+</head>
+<body>
+    <model-viewer
+        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+        skybox-image="https://drive.google.com/file/d/109j4ZFb0Fw4uSjQfhCf29LcxLQ11y4kE/view?usp=sharing"
+        environment-image="neutral"
+        auto-rotate
+        camera-controls
+        exposure="1"
+        style="
+            width: 800px;
+            height: 600px;
+        "
+    >
+    </model-viewer>
+
+    <script>
+        const viewer = document.querySelector('model-viewer');
+
+        viewer.addEventListener('loaded', () => {
+            console.log('Model and environment loaded');
+        });
+
+        viewer.addEventListener('error', (event) => {
+            console.error('Error loading:', event);
+        });
+    </script>
+</body>
+</html>
